@@ -1,0 +1,80 @@
+<div class="section m-5"></div>
+   
+   
+{{#each orders}}
+   <div class="container">
+  
+     <h5>cart Id: <span class="text-secondary">{{this._id}}</span></h5>
+    
+       
+        <h6>{{this.date}}</h6>
+        <h6>Total Price: {{this.total}}</h6>
+        <h6>Payment: {{this.Payment}}</h6>
+        
+        <h6 id="{{this._id}}"> status : {{this.status}}</h6>
+        <div class="d-flex">
+        <span class=""> <button class="btn btn-success" onclick="confirmOrder('{{this._id}}')">Confirm Order</button></span>
+        <span class="ml-2"> <button class="btn btn-danger" onclick="cancelOrder('{{this._id}}')">Cancel Order</button></span>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3" data-toggle="collapse" data-target="#{{this.date}}">Products and Address</button>
+        <div id="{{this.date}}" class="collapse in "> 
+        <h3 style="color: rgb(153, 113, 38);">Products</h3>
+        {{#each cartItems}} 
+              
+        <h6>{{this.Product.Name}} <span class="ml-3">Quantity:  {{this.Product.quantity}}</span></h6> 
+         
+        {{/each}} 
+      
+      <h5 style="color: rgb(153, 113, 38);">Address</h5>
+        <p style="margin: 0px;">{{this.DeliveryAddress.Name}}</p>
+        <p style="margin: 0px;">Mobile: {{this.DeliveryAddress.Phone}}</p>
+        <p style="margin: 0px;">{{this.DeliveryAddress.State}}</p>
+        <p style="margin: 0px;">{{this.DeliveryAddress.District}}</p>
+        <p style="margin: 0px;">{{this.DeliveryAddress.PostOffice}}</p>
+        <p style="margin: 0px;">Pin code: {{this.DeliveryAddress.PinCode}}</p>
+      <hr>
+       </div> 
+        
+        
+    
+     <hr style="border-top: 10px solid #8c8b8b;">
+ </div>    
+{{/each}}
+
+     </div>
+     <script>
+      function confirmOrder(cartId)
+      {
+        $.ajax({
+          url:"/admin/confirmOrder",
+          data:{
+            cartId:cartId
+          },
+          method:"post",
+          success:()=>
+          {
+            document.getElementById(cartId).innerHTML="status : Confirmed and shipped"
+            location.reload()
+            
+          }
+        })
+      }
+      function cancelOrder(cartId)
+      {
+        $.ajax({
+          url:"/admin/cancelOrder",
+          data:{
+            cartId:cartId
+          },
+          method:"post",
+           success:()=>
+          {
+            document.getElementById(cartId).innerHTML="status : Order Cancelled"
+            location.reload()
+            
+          }
+
+        })
+      }
+     </script>
+     

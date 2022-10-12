@@ -1,0 +1,139 @@
+<div class="section margintopothers">
+    <div class="container">
+        <div class="card p-5">
+            <h3>Order Summary</h3>
+            <h6>Online Payment</h6>
+            <div>
+                <table class="table">
+                    <tbody>
+                        {{#each cartItems}}
+                        <tr>
+                            <td>{{this.Product.Name}} </td>
+                            <td> Price: Rs.{{this.Product.Price}} </td>
+                            <td>Quantity: {{this.Product.quantity}} </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+            </div>
+            <h5>Total: Rs.{{total.totalAmount}}</h5>
+            <form  id="checkout-form">
+                
+                
+                
+
+             
+            <div class="card p-5 w-50">
+                <h5>Delivery Address</h5><hr>
+                <div class="">
+                <p>Name: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.Name}}" name="Name">
+                </div>
+                <div class="">
+                <p>State: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.State}}" name="State">
+                </div>
+                <div class="">
+                <p>District: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.District}}" name="District">
+                </div>
+                <div class="">
+                <p>Post Office: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.PostOffice}}" name="PostOffice">
+                </div>
+                <div class="">
+                 <p>Pincode: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.PinCode}}" name="PinCode">
+                </div>
+                <div class="">
+                 <p>Phone number: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.Phone}}" name="Phone">
+                </div>
+                
+                
+                
+               
+               
+            </div>
+            <div class="d-flex mt-2">
+            <button type="submit" class="btn btn-success w-15">Confirm</button>
+            <a href="/" class="btn btn-secondary w-15 ml-4">Cancel Order</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+   $('#checkout-form').submit((e)=>
+   {
+    e.preventDefault()
+    $.ajax({
+        url:'/orderPlacedOnline',
+        method:'post',
+        data:$('#checkout-form').serialize(),
+        success:(response)=>
+        {
+            
+            razorpayPayment(response)
+        }
+    })
+   })
+   function razorpayPayment(order)
+   {
+    var options = {
+    "key": "rzp_test_eixIFWkXHBMxdh", // Enter the Key ID generated from the Dashboard
+    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    "handler": function (response){
+               
+               verifyPayment(response,order)
+
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+   };
+   var rzp1 = new Razorpay(options);
+   rzp1.open();
+   }
+   function verifyPayment(payment,order)
+   {
+    $.ajax({
+        url:'/verify-payment',
+        data:{
+            payment,
+            order
+        },
+        method:'post',
+        success:(response)=>
+        {
+            console.log(response.status)
+            if(response.status)
+            {
+                
+                location.href='/orderSuccess-online';
+            }
+            else{
+                alert("failed")
+            }
+        }
+    })
+   }
+
+</script>
+    

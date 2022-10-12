@@ -1,0 +1,60 @@
+<div class="section margintopothers">
+    <div class="container">
+        <div class="card p-5">
+            <h3>Order Summary</h3>
+            <div>
+                <table class="table">
+                    <tbody>
+                        {{#each cartItems}}
+                        <tr>
+                            <td>{{this.Product.Name}} </td>
+                            <td> Price: Rs.{{this.Product.Price}} </td>
+                            <td>Quantity: {{this.Product.quantity}} </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+            </div>
+            <h5>Total: Rs.{{total.totalAmount}}</h5>
+            <form action="/orderPlaced" method="post">
+            <div class="card p-5 w-50">
+                <h5>Delivery Address</h5><hr>
+                <div class="">
+                <p>Name: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.Name}}" name="Name">
+                </div>
+                <div class="">
+                <p>State: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.State}}" name="State">
+                </div>
+                <div class="">
+                <p>District: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.District}}" name="District">
+                </div>
+                <div class="">
+                <p>Post Office: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.PostOffice}}" name="PostOffice">
+                </div>
+                <div class="">
+                 <p>Pincode: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.PinCode}}" name="PinCode">
+                </div>
+                <div class="">
+                 <p>Phone number: </p>
+                <input class="form-control ml-3" type="text" value="{{DeliveryDetails.Phone}}" name="Phone">
+                </div>
+                
+                
+                
+               
+               
+            </div>
+            <div class="d-flex mt-2">
+            <button type="submit" class="btn btn-success w-15">Confirm</button>
+            <a href="/" class="btn btn-secondary w-15 ml-4">Cancel Order</a>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

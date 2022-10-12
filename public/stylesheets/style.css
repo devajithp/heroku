@@ -1,0 +1,33 @@
+body {
+ 
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.incdec
+{
+  width: 45px;
+}
+.margintop
+{
+  margin-top: 87px;
+}
+.margintopothers
+{
+  margin-top: 170px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+

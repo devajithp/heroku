@@ -1,0 +1,56 @@
+<div class="section  margintopothers">
+    <div class="container">
+        <h3>Address Details</h3><br>
+ 
+      <form method="post" action="/orderSummary">
+          <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        
+              <div class="form-group">
+              <label for="exampleInputEmail1">Name</label>
+              <input name="Name" type="text" class="form-control w-50" id="exampleInputEmail1" aria-describedby="emailHelp" >
+              </div>
+              <div class="form-group">
+              <label for="exampleInputEmail1">State</label>
+              <input name="State" type="text" class="form-control w-50" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    
+              </div>
+             <div class="form-group">
+             <label for="exampleInputPassword1">District</label>
+             <input name="District" type="text" class="form-control w-50" id="exampleInputPassword1" >
+              </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Post Office Name</label>
+            <input name="PostOffice" type="text" class="form-control w-50" id="exampleInputPassword1" >
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">PinCode</label>
+            <input name="PinCode" type="text" class="form-control w-50" id="exampleInputPassword1" >
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Phone Number</label>
+            <input name="Phone" type="text" class="form-control w-50" id="exampleInputPassword1" >
+            </div>
+         </div>
+          
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+             <div class="card p-3" style="width: 300px;">
+                  <h4>Total: RS.{{total}}</h4><br>
+                  <div class="d-flex">
+                  <input type="radio" name="paymentOption" value="COD">
+                  <label class="ml-4 mt-1">COD</label>
+                  </div>
+                 <div class="d-flex">
+                  <input type="radio" name="paymentOption" value="Online">
+                  <label class="ml-4 mt-1">Online Payment</label>
+                  </div>
+                 
+                  
+                  <button type="submit" class="btn btn-primary mt-4" style="width:120px" type="submit">Check out</button>
+             </div>
+          </div>
+      </div>  
+      </form>
+ 
+ </div>
+</div>

@@ -1,0 +1,28 @@
+<h2 class="text-center margintopothers">cart</h2>
+<div class="section">
+    <div class="container">
+        <div class="row">
+             <div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12 ">
+        <table class="table mt-4">
+           <tbody>
+            {{#each cartItems}}
+            <tr>
+                
+                <td>{{this.Product.Name}}</td>
+                <td>Price : RS.{{this.Product.Price}}</td>
+                <td><img style="height:50px; width:50px;" src="/product-images/{{this.Product.prodId}}.jpg"></td>
+                
+                <td><a href="/decrement/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-secondary incdec"> - </a><span id="{{this.Product.prodId}}">  {{this.Product.quantity}}  </span><a href="/increment/{{this.Product.prodId}}/{{this.Product.quantity}}"  class="btn btn-secondary incdec"> + </a></td>
+                <td><a href="/remove/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-danger" >Remove</a></td>
+                
+            </tr>
+            {{/each}}
+           </tbody>
+        </table>
+        </div>
+
+        </div>  
+    </div>
+    <h4 class="ml-5">Total:Rs.{{totalAmount}}</h4><br>
+    <a href="/order/{{totalAmount}}" class="btn btn-success ml-5">Place Order</a>
+</div>

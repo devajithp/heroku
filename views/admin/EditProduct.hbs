@@ -1,0 +1,36 @@
+<div class="section mt-5">
+  <div class="container">
+    <form action="/admin/edit-product/{{editingProduct._id}}"  enctype="multipart/form-data"  method="post">
+        <h2>Edit Product</h2><br>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Name</label>
+  <input value="{{editingProduct.Name}}" style="width: 500px;" type="text" name="Name" class="form-control" id="exampleFormControlInput1" >
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Price</label>
+  <input value="{{editingProduct.Price}}" style="width: 500px;" type="text" name="Price" class="form-control" id="exampleFormControlInput1" >
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Description</label>
+  <input value="{{editingProduct.Description}}" style="width: 500px;" type="text" name="Description" class="form-control" id="exampleFormControlInput1" >
+</div>
+<div>
+    <img id="displayImg" style="height: 50px; width: 50px;" src="/product-images/{{editingProduct._id}}.jpg">
+</div>
+
+
+<div class="mb-3">
+  <label for="formFile" class="form-label">Upload Image</label>
+  <input style="width: 500px;" class="form-control" name="Image" type="file" id="formFile" onchange="displayImage(event)">
+</div>
+
+<button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<script>
+    function displayImage(event)
+    {
+        document.getElementById("displayImg").src=URL.createObjectURL(event.target.files[0])
+    }
+</script>
