@@ -1,4 +1,4 @@
-<h2 class="text-center margintopothers">cart</h2>
+<h2 class=" text-center ml-5 margintopothers">cart</h2>
 <div class="section">
     <div class="container">
         <div class="row">
@@ -8,9 +8,9 @@
             {{#each cartItems}}
             <tr>
                 
-                <td>{{this.Product.Name}}</td>
-                <td>Price : RS.{{this.Product.Price}}</td>
-                <td><img style="height:50px; width:50px;" src="/product-images/{{this.Product.prodId}}.jpg"></td>
+                <td><h4>{{this.Product.Name}}</h4></td>
+                <td><h5>Price : RS.{{this.Product.Price}}</h5></td>
+                <td ><img class="imageMargin"style="height:50px; width:30px;" src="/product-images/{{this.Product.prodId}}.jpg"></td>
                 
                 <td><a href="/decrement/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-secondary incdec"> - </a><span id="{{this.Product.prodId}}">  {{this.Product.quantity}}  </span><a href="/increment/{{this.Product.prodId}}/{{this.Product.quantity}}"  class="btn btn-secondary incdec"> + </a></td>
                 <td><a href="/remove/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-danger" >Remove</a></td>
@@ -23,6 +23,8 @@
 
         </div>  
     </div>
+    <div class="mt-3">
     <h4 class="ml-5">Total:Rs.{{totalAmount}}</h4><br>
     <a href="/order/{{totalAmount}}" class="btn btn-success ml-5">Place Order</a>
+    </div>
 </div>

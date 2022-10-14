@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section margintopothers">
     <div class="container">
         <h4 class="mt-3 " style="color: rgb(151, 110, 35);">Orders</h4><hr>
         {{#each userOrder}}
@@ -7,8 +7,9 @@
            <h6><span class="text-danger">Date of Order:</span> {{this.date}}</h6>
            <h6>Total Price: {{this.total}}</h6>
            <h6 mt-3>status :{{this.status}}</h6>
-             {{#each cartItems}}
+             
              <table class="table">
+                {{#each cartItems}}
                 <tbody>
                     <tr>
                         <td>{{this.Product.Name}}</td>
@@ -16,9 +17,10 @@
                         <td>Quantity: {{this.Product.quantity}}</td>
                     </tr>
                 </tbody>
+                 {{/each}}
              </table>
               
-             {{/each}}
+            
              
            
         {{/each}}
