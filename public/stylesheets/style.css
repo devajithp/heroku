@@ -17,7 +17,7 @@ a {
 }
 .margintop
 {
-  margin-top: 87px;
+  margin-top: 114px;
 }
 .margintopothers
 {
@@ -53,6 +53,19 @@ th, td {
   margin-left: 50px;
 }
 .margintopadmin
+{
+  margin-top: 180px;
+}
+
+.paddingForFooter
+{
+  margin-top: -29px;
+}
+.sectionHeight
+{
+  height: 900px;
+}
+.footerMargin
 {
   margin-top: 180px;
 }
