@@ -24,6 +24,7 @@
     "razorpay": "^2.8.3"
   },
   "devDependencies": {
+    "electron-rebuild": "^3.2.9",
     "handlebars": "^4.5.0"
   }
 }
