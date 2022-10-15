@@ -8,11 +8,12 @@ var logger = require('morgan');
 var db= require("./config/connection") 
 var fileUpload = require("express-fileupload")
 var session=require("express-session")
+
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
+
 var app = express();
 process.env.PWD = process.cwd()
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,17 +40,6 @@ db.connects(()=>
 {
   console.log("connection established")
 })
-app.use(express.static(process.env.PWD + '/public/product-images'))
-process.on
-(
-    'uncaughtException',
-    function (err)
-    {
-        console.log(err)
-        var stack = err.stack;
-        //you can also notify the err/stack to support via email or other APIs
-    }
-);
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
