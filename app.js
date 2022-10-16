@@ -40,6 +40,17 @@ db.connects(()=>
 {
   console.log("connection established")
 })
+app.use(express.static(process.env.PWD + '/public/product-images'))
+process.on
+(
+    'uncaughtException',
+    function (err)
+    {
+        console.log(err)
+        var stack = err.stack;
+        //you can also notify the err/stack to support via email or other APIs
+    }
+);
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
