@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
-app.use(session({secret:"key",cookie:{maxAge:600000}}))
+app.use(session({secret:"key",cookie:{maxAge:600000},resave:true, saveUninitialized:true}))
 
 
 db.connects((err)=>         
@@ -50,7 +50,7 @@ process.on
         var stack = err.stack;
         //you can also notify the err/stack to support via email or other APIs
     }
-);
+)
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
