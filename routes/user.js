@@ -18,9 +18,9 @@ const verifyLogin=function(req,res,next)
   }
 }
 
-router.get('/', async function(req, res, next) {
+router.get('/',  function(req, res, next) {
 
-  await adminHelpers.addAdminCred()
+  
   let user=req.session.user
   productHelpers.getProduct().then((product)=>
   {
