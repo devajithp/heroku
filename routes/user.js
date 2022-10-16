@@ -64,7 +64,8 @@ router.post("/login",(req,res)=>
 })
 router.get("/logout",(req,res)=>
 {
-  req.session.destroy()
+  req.session.user=null
+  req.session.userLogged=false
   res.redirect("/")
 })
 router.get("/cart",verifyLogin,(req,res)=>

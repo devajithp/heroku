@@ -104,7 +104,8 @@ router.post('/login',(req,res)=>
 })
 router.get("/logout",(req,res)=>
 {
-  req.session.destroy();
+  req.session.admin=null;
+  req.session.adminLoggin=false;
   res.redirect("/admin/")
 
 })
