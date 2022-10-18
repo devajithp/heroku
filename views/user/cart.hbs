@@ -2,7 +2,8 @@
 <div class="section">
     <div class="container">
         <div class="row">
-             <div class="col-xs-3 col-sm-3 col-md-12 col-lg-12 col-xl-12 ">
+             <div class="xs-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 ">
+                <div style="overflow-x:auto;">
         <table class="table mt-4">
            <tbody>
             {{#each cartItems}}
@@ -10,15 +11,19 @@
                 
                 <td><h4>{{this.Product.Name}}</h4></td>
                 <td><h5>Price : RS.{{this.Product.Price}}</h5></td>
-                <td ><img class="imageMargin"style="height:50px; width:30px;" src="/product-images/{{this.Product.prodId}}.jpg"></td>
-                
-                <td><a href="/decrement/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-secondary incdec"> - </a><span id="{{this.Product.prodId}}">  {{this.Product.quantity}}  </span><a href="/increment/{{this.Product.prodId}}/{{this.Product.quantity}}"  class="btn btn-secondary incdec"> + </a></td>
+                <td ><img class=""style="height:50px; width:30px;" src="/product-images/{{this.Product.prodId}}.jpg"></td>
+                <div class="d-flex">
+                <td><a href="/decrement/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-secondary dec"> - </a> </td>
+                <td ><span id="{{this.Product.prodId}}">  {{this.Product.quantity}}  </span></td>
+                <td ><a href="/increment/{{this.Product.prodId}}/{{this.Product.quantity}}"  class="btn btn-secondary "> + </a></td>
+                </div>
                 <td><a href="/remove/{{this.Product.prodId}}/{{this.Product.quantity}}" class="btn btn-danger" >Remove</a></td>
                 
             </tr>
             {{/each}}
            </tbody>
         </table>
+        </div>
         </div>
 
         </div>  

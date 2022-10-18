@@ -11,9 +11,9 @@ body {
 a {
   color: #00B7FF;
 }
-.incdec
+.dec
 {
-  width: 45px;
+  width: 39px;
 }
 .margintop
 {
@@ -25,10 +25,7 @@ a {
 }
 
 
-th, td {
-  text-align: left;
-  padding: 8px;
-}
+
 .pImage
 {
   margin-left: 92px;
@@ -72,4 +69,7 @@ th, td {
 .margintopaddproduct
 {
   margin-top: 180px;
+}
+.mar{
+  margin-left: -10px;
 }
